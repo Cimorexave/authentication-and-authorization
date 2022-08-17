@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/Cimorexave/authentication-and-authorization#readme",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "bcrypt": "^5.0.1",
     "express": "^4.18.1",
     "ts-node": "^10.9.1"
   },
