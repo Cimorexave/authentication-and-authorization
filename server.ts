@@ -9,3 +9,9 @@ const app = express()
 //Middleware
 //Parsing json reqs
 app.use(express.json())
+//Routes
+import authentication from "routes/authentication";
+import authorization from "routes/authorization";
+import posts from "routes/posts";
+//Protected Route
+app.use("/api/", posts)
