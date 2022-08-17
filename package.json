@@ -1,0 +1,28 @@
+{
+  "name": "authentication-and-authorization",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cimorexave/authentication-and-authorization.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cimorexave/authentication-and-authorization/issues"
+  },
+  "homepage": "https://github.com/Cimorexave/authentication-and-authorization#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19",
+    "typescript": "^4.7.4"
+  }
+}
