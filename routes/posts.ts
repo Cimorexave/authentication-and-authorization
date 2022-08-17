@@ -3,7 +3,7 @@ import * as express from "express";
 import {Request, Response} from "express";
 const router = express().Router()
 
-router.post("/login", (req, res) => {
+router.post("/posts/", (req, res) => {
     
 })
 
