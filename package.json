@@ -2,7 +2,7 @@
   "name": "authentication-and-authorization",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.ts",
   "scripts": {
     "start": "nodemon server"
   },
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/Cimorexave/authentication-and-authorization.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Sina Sadeqi",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Cimorexave/authentication-and-authorization/issues"
