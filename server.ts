@@ -5,7 +5,7 @@ const app = express()
 //import db accessories
 import User from "./entities/User";
 import { DataSource } from "typeorm";
-
+//Connecting to database
 const AppDataSource = new DataSource({
     type: "postgres",
     host: "localhost",
