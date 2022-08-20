@@ -2,19 +2,11 @@ import joi from "@hapi/joi";
 import * as express from "express";
 const router = express.Router()
 
-//Register Validation
-export const registerValidation = data => {
-    const registerValidationSchema = {
+//Register & Login Validation
+export const validation = data => {
+    const validationSchema = {
         name: joi.string().min(3).required(),
         password: joi.string().min(6).required()
     }
-    return joi.validate(data , registerValidationSchema)
-}
-
-//Login Validation
-export const loginValidation = data => {
-    const loginValidationSchema = {
-
-    }
-    return joi.validate(data, loginValidationSchema)
+    return joi.validate(data , validationSchema)
 }

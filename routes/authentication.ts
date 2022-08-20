@@ -6,7 +6,7 @@ const router = express.Router()
 import User from "../entities/User";
 
 //Validation
-import {registerValidation} from "../validation/validation"
+import {validation as validate} from "../validation/validation"
 
 //GET REQUEST
 router.get("/register", (req: Request, res: Response) => {
@@ -15,7 +15,7 @@ router.get("/register", (req: Request, res: Response) => {
 //POST REQUEST
 router.post("/register", async (req: Request, res: Response) => {
     //User Request Validation
-    const {error} = registerValidation(req.body)
+    const {error} = validate(req.body)
     if (error) res.status(400).send(error.details[0].message)
 
     //Creating a user instance
