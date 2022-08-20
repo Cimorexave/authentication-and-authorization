@@ -4,19 +4,7 @@ import {Request, Response} from "express";
 const app = express()
 //import db accessories
 import User from "./entities/User";
-import { createConnection, DataSource } from "typeorm";
-// createConnection({
-//     type: "postgres",
-//     database: "postgres",
-//     username: "postgres",
-//     password: "changeme",
-//     logging: true,
-//     synchronize: true,
-//     entities: [User]
-// }).then( () => {
-//     console.log("Connected to Database")
-// })
- //Connecting to the Database
+import { DataSource } from "typeorm";
 
 const AppDataSource = new DataSource({
     type: "postgres",
@@ -41,6 +29,9 @@ app.use(express.json())
 import authentication from "routes/authentication";
 import authorization from "routes/authorization";
 import posts from "./routes/posts";
+//regular routes
+app.use(authentication)
+app.use(authorization)
 // Protected Route
 app.use("/api/", posts)
 
