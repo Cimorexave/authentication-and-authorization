@@ -2,9 +2,32 @@
 import * as express from "express";
 import {Request, Response} from "express";
 const router = express.Router()
+//import schema
+import User from "../entities/User";
 
-router.post("/register", (req, res) => {
-    
+//Validation
+import {registerValidation} from "../validation/validation"
+
+//GET REQUEST
+router.get("/register", (req: Request, res: Response) => {
+    res.status(200).send("Register User")
+})
+//POST REQUEST
+router.post("/register", async (req: Request, res: Response) => {
+    //User Request Validation
+    const {error} = registerValidation(req.body)
+    if (error) res.status(400).send(error.details[0].message)
+
+    //Creating a user instance
+    const user = new User
+    user.name = req.body.username
+    user.password = req.body.password
+
+    //Saving to database
+    await user.save()
+
+    //Response
+    res.status(200).json({ "success": true, user })
 })
 
 export default router
