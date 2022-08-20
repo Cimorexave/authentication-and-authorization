@@ -2,6 +2,9 @@
 import * as express from "express";
 import {Request, Response} from "express";
 const router = express.Router()
+//import bcrypt
+import bcrypt from "bcryptjs";
+
 //import schema
 import User from "../entities/User";
 
@@ -27,10 +30,15 @@ router.post("/register", async (req: Request, res: Response) => {
         name: req.body.username
     })
     if (userExists) res.status(400).send("User already exists in the database")
+
+    //Hash the password
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.Hash(req.body.password, salt)
+
     //Creating a user instance
     const user = new User
     user.name = req.body.username
-    user.password = req.body.password
+    user.password = hashedPassword
 
     //Saving to database
     await user.save()
