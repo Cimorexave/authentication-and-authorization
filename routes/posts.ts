@@ -3,8 +3,14 @@ import * as express from "express";
 import {Request, Response} from "express";
 const router = express.Router()
 
-router.post("/posts/", (req, res) => {
-    
+//import token verification
+import { tokenVerification } from "../validation/verifyToken";
+
+router.post("/posts/", tokenVerification, (req, res) => {
+    res.json({
+        "secret" : true,
+        "msg" : "protected data"
+    })
 })
 
 export default router
