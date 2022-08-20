@@ -6,7 +6,7 @@ const app = express()
 import User from "./entities/User";
 import { DataSource } from "typeorm";
 //Connecting to database
-const AppDataSource = new DataSource({
+export const myAppDataSource = new DataSource({
     type: "postgres",
     host: "localhost",
     port: 5432,
