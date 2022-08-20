@@ -21,12 +21,11 @@ router.get("/register", (req: Request, res: Response) => {
 })
 //POST REQUEST
 router.post("/register", async (req: Request, res: Response) => {
-    /*
+    
     //User Request Validation
     const {error} = validate(req.body)
     if (error) res.status(400).send(error.details[0].message)
-
-    */
+    
     //Checking if the user has registered before
     const userExists = await userRepository.findOneBy({
         name: req.body.username
