@@ -19,6 +19,14 @@ export const myAppDataSource = new DataSource({
     subscribers: [],
     migrations: [],
 })
+//Initializing the database
+myAppDataSource.initialize()
+    .then(() => {
+        console.log("Data Source has been initialized!")
+    })
+    .catch((err) => {
+        console.error("Error during Data Source initialization", err)
+    })
  //config env 
  import "dotenv/config"
 
