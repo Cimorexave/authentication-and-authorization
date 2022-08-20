@@ -5,6 +5,10 @@ const router = express.Router()
 //import schema
 import User from "../entities/User";
 
+//import datasource
+import { myAppDataSource } from "../server";
+const userRepository = myAppDataSource.getRepository(User)
+
 //Validation
 import {validation as validate} from "../validation/validation"
 
@@ -18,6 +22,11 @@ router.post("/register", async (req: Request, res: Response) => {
     const {error} = validate(req.body)
     if (error) res.status(400).send(error.details[0].message)
 
+    //Checking if the user has registered before
+    const userExists = await userRepository.findOneBy({
+        name: req.body.username
+    })
+    if (userExists) res.status(400).send("User already exists in the database")
     //Creating a user instance
     const user = new User
     user.name = req.body.username
