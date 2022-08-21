@@ -7,7 +7,7 @@ const router = express.Router()
 import jwt from "jsonwebtoken";
 
 //import Bcrypt
-import bcrypt from "bcryptjs";
+const bcrypt = require("bcryptjs")
 
 //import schema
 import User from "../entities/User";
