@@ -4,10 +4,10 @@ import {Request, Response} from "express";
 const router = express.Router()
 
 //import jwt
-import jwt from "jsonwebtoken";
+const jwt = require("jsonwebtoken")
 
 //import Bcrypt
-const bcrypt = require("bcryptjs")
+const bcrypt = require("bcryptjs");
 
 //import schema
 import User from "../entities/User";
@@ -43,6 +43,7 @@ router.post("/login", async (req: Request, res: Response) => {
     const token = jwt.sign({
         id: user.id
     }, process.env.TOKEN_SECRET)
+    //Send the token
     res.header("auth-token", token).send(token)
 
     // res.send("Logged in successfully!")
