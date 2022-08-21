@@ -48,7 +48,7 @@ app.use(authorization)
 // Protected Route
 app.use("/api/", posts)
 //file upload
-app.use("upload", fileUpload)
+app.use("/upload", fileUpload)
 
 //Running Server
 app.listen(process.env.SERVER_PORT, () => {
