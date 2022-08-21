@@ -2,7 +2,6 @@
 import * as express from "express";
 const router = express.Router();
 import {Request, Response} from "express";
-import { any } from "joi";
 //multer
 import * as multer from "multer";
 const upload = multer({dest: 'uplopads/'})
@@ -10,6 +9,9 @@ const upload = multer({dest: 'uplopads/'})
 interface MulterRequest extends Request {
     file: any;
 }
+//import token verification
+import {tokenVerification}  from "../validation/verifyToken";
+
 
 router.get("/", (req: Request, res: Response) => {
     res.status(200).send("Upload File")
@@ -17,8 +19,9 @@ router.get("/", (req: Request, res: Response) => {
 
 //Don't forget the enctype="multipart/form-data" in your form.
 
-router.post("/", upload.single('file') ,(req: MulterRequest, res: Response) => {
-    console.log(req.file)
+router.post("/", tokenVerification ,upload.single('file') ,(req: MulterRequest, res: Response) => {
+    // console.log(req.file)
+    //Save to database
 })
 
 export default router;
