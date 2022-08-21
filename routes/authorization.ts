@@ -4,7 +4,7 @@ import {Request, Response} from "express";
 const router = express.Router()
 
 //import jwt
-const jwt = require("jsonwebtoken")
+import * as jwt from "jsonwebtoken";
 
 //import Bcrypt
 const bcrypt = require("bcryptjs");
@@ -26,13 +26,14 @@ router.get("/login", (req: Request, res: Response) => {
 //POST REQUEST
 router.post("/login", async (req: Request, res: Response) => {
     //User Request Validation
-    const {error} = validate(req.body)
-    if (error) res.status(400).send(error.details[0].message)
+    // const {error} = validate(req.body)
+    // if (error) res.status(400).send(error.details[0].message)
 
     //Checking if the user has registered before
     const user = await userRepository.findOneBy({
         name: req.body.username
     })
+    console.log({user})
     if (!user) res.status(400).send(`User doesn't exist.`)
 
     //Check for password
@@ -40,11 +41,12 @@ router.post("/login", async (req: Request, res: Response) => {
     if(!validPassword) return res.status(400).send("Password is incorrect")
 
     //Creating a token
-    const token = jwt.sign({
-        id: user.id
-    }, process.env.TOKEN_SECRET)
+    const token = jwt.sign({user: user.id} , process.env.TOKEN_SECRET,
+    {expiresIn: 60 * 60})
     //Send the token
-    res.header("auth-token", token).send(token)
+    res.json({
+        token
+    })
 
     // res.send("Logged in successfully!")
 

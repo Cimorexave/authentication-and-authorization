@@ -2,6 +2,8 @@
 import * as express from "express";
 import {Request, Response} from "express";
 const app = express()
+//import CORS
+const cors = require("cors")
 //import db accessories
 import User from "./entities/User";
 import { DataSource } from "typeorm";
@@ -31,6 +33,8 @@ myAppDataSource.initialize()
  import "dotenv/config"
 
 //Middleware
+//Cors
+app.use(cors())
 //Parsing json reqs
 app.use(express.json())
 //Routes
