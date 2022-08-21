@@ -5,4 +5,4 @@ For authorization visit "/login"; Post username & password request in the body t
 You can use the token to see the protected path "/api/posts"; if allowed you'll see the top secret information.
 
 ## Keywords
-Main technologies used in this project are: `Nodejs`, `Expressjs`, `PostgreSQL`, `TypeORM`, `Joi`, `BCrypt`
+Main technologies used in this project are: `Nodejs`, `Expressjs`, `TypeScript`,`PostgreSQL`, `TypeORM`, `Joi`, `BCrypt`
