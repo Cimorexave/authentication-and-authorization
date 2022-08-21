@@ -41,11 +41,14 @@ app.use(express.json())
 import authentication from "./routes/authentication";
 import authorization from "./routes/authorization";
 import posts from "./routes/posts";
+import fileUpload from "./routes/file-upload";
 //regular routes
 app.use(authentication)
 app.use(authorization)
 // Protected Route
 app.use("/api/", posts)
+//file upload
+app.use("upload", fileUpload)
 
 //Running Server
 app.listen(process.env.SERVER_PORT, () => {
